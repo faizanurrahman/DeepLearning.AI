@@ -2,7 +2,7 @@ import numpy as np
 from Deep_Neural_Network_Scratch.Test_File import *
 
 
-def initialize_parameters_deep(layer_dims, init_type='random'):
+def initialize_parameters_deep(layer_dims, initialization='random'):
 	"""
 	Arguments:
 	layer_dims -- list containing the dimensions of each layer in our network
@@ -19,13 +19,13 @@ def initialize_parameters_deep(layer_dims, init_type='random'):
 
 	for l in range(1, L):
 		# initialize parameters for each layer
-		if init_type == 'random':
+		if initialization == 'random':
 			parameters['W' + str(l)] = np.random.randn(layer_dims[l], layer_dims[l - 1]) * 0.01
 			parameters['b' + str(l)] = np.zeros((layer_dims[l], 1))
-		elif init_type == 'he':
+		elif initialization == 'he':
 			parameters['W' + str(l)] = np.random.randn(layer_dims[l], layer_dims[l - 1]) * (np.sqrt(2/layer_dims[l-1]))
 			parameters['b' + str(l)] = np.zeros((layer_dims[l], 1))
-		elif init_type == 'xavier':
+		elif initialization == 'xavier':
 			parameters['W' + str(l)] = np.random.randn(layer_dims[l], layer_dims[l - 1]) * (np.sqrt(1/layer_dims[l - 1]))
 			parameters['b' + str(l)] = np.zeros((layer_dims[l], 1))
 		else:
@@ -38,7 +38,7 @@ def initialize_parameters_deep(layer_dims, init_type='random'):
 
 
 if __name__ == '__main__':
-	parameters = initialize_parameters_deep([5, 4, 3], init_type='xavier')
+	parameters = initialize_parameters_deep([5, 4, 3], initializaiton = 'xavier')
 	print("W1 = " + str(parameters["W1"]))
 	print("b1 = " + str(parameters["b1"]))
 	print("W2 = " + str(parameters["W2"]))
